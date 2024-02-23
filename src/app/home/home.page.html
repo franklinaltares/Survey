@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Social Innovation Research Center</ion-title>
+    <ion-title>Survey Questionaire</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1>Personal Information Data</h1>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-input
+          label="Last Name"
+          labelPlacement="floating"
+          placeholder="Enter"
+        ></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input
+          label="First Name"
+          labelPlacement="floating"
+          placeholder="Enter"
+        ></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input
+          label="Middle Initial"
+          labelPlacement="floating"
+          placeholder="Enter"
+        ></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-input
+            label="Prefix"
+            labelPlacement="floating"
+            placeholder="Enter"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-item>
+    <ion-input label="Age:" type="number" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      type="tel"
+      [(ngModel)]="birthdate"
+      (ionChange)="onBirthdateChange($event)"
+      label="Birthdate"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      label="Contact Number"
+      type="Number"
+      placeholder="09XXXXXXXXX"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Gender</ion-label>
+    <ion-button id="gender-popover-button">Pick</ion-button>
+    <ion-popover trigger="gender-popover-button" [dismissOnSelect]="true">
+      <ng-template>
+        <ion-content>
+          <ion-list>
+            <ion-item [button]="true" [detail]="false">Male</ion-item>
+            <ion-item [button]="true" [detail]="false">Female </ion-item>
+            <ion-item [button]="true" id="nested-trigger"
+              >More options...</ion-item
+            >
+              <ng-template>
+                <ion-content>
+                  <ion-list>
+                    <ion-item [button]="true" [detail]="false">1..</ion-item>
+                    <ion-item [button]="true" [detail]="false">.2.</ion-item>
+                    <ion-item [button]="true" [detail]="false">..3</ion-item>
+                  </ion-list>
+                </ion-content>
+              </ng-template>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Status</ion-label>
+    <ion-button id="status-popover-button">Pick</ion-button>
+    <ion-popover trigger="status-popover-button" [dismissOnSelect]="true">
+      <ng-template>
+        <ion-content>
+          <ion-list>
+            <ion-item [button]="true" [detail]="false">Single</ion-item>
+            <ion-item [button]="true" [detail]="false">Married </ion-item>
+            <ion-item [button]="true" [detail]="false">Widowed </ion-item>
+            <ion-item [button]="true" [detail]="false">Separated </ion-item>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Nationality" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Occupation" type="text" placeholder=""></ion-input>
+  </ion-item>
+
+
+    <ion-item>
+      <ion-label>Highest Education</ion-label>
+      <ion-button id="education-popover-button">Pick</ion-button>
+      <ion-popover trigger="education-popover-button" [dismissOnSelect]="true">
+      <ng-template>
+        <ion-content>
+          <ion-list>
+            <ion-item [button]="true" [detail]="false">None</ion-item>
+            <ion-item [button]="true" [detail]="false">Elementary </ion-item>
+            <ion-item [button]="true" [detail]="false">High School </ion-item>
+            <ion-item [button]="true" [detail]="false">Tertiary High School </ion-item>
+            <ion-item [button]="true" [detail]="false">College </ion-item>
+          </ion-list>
+          </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title
+      >Batangas State University The National Engineering University
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
