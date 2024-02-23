@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first"></ion-menu-button>
+    </ion-buttons>
     <ion-title>Social Innovation Research Center</ion-title>
     <ion-title>Survey Questionaire</ion-title>
   </ion-toolbar>
@@ -10,49 +13,51 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col>
-        <ion-input
-          label="Last Name"
-          labelPlacement="floating"
-          placeholder="Enter"
-        ></ion-input>
-      </ion-col>
-      <ion-col>
-        <ion-input
-          label="First Name"
-          labelPlacement="floating"
-          placeholder="Enter"
-        ></ion-input>
-      </ion-col>
-      <ion-col>
-        <ion-input
-          label="Middle Initial"
-          labelPlacement="floating"
-          placeholder="Enter"
-        ></ion-input>
-      </ion-col>
-      <ion-col>
+      <ion-col size="12" size-sm="6">
         <ion-item>
-          <ion-input
-            label="Prefix"
-            labelPlacement="floating"
-            placeholder="Enter"
-          ></ion-input>
+          <ion-label position="floating">Last Name</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" size-sm="6">
+        <ion-item>
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" size-sm="6">
+        <ion-item>
+          <ion-label position="floating">Middle Initial</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" size-sm="6">
+        <ion-item>
+          <ion-label position="floating">Prefix</ion-label>
+          <ion-input></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
+
   <ion-item>
-    <ion-input label="Age:" type="number" placeholder=""></ion-input>
+    <ion-label position="floating">Age:</ion-label>
+    <ion-input type="number"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input
-      type="tel"
+    <ion-label>Birthdate: {{ formattedBirthdate }}</ion-label>
+    <ion-datetime
+      presentation="date"
+      label-placement="stacked"
+      alignment="end"
       [(ngModel)]="birthdate"
       (ionChange)="onBirthdateChange($event)"
-      label="Birthdate"
-    ></ion-input>
+      [value]="formattedBirthdate"
+    ></ion-datetime>
   </ion-item>
 
   <ion-item>
@@ -64,47 +69,33 @@
   </ion-item>
 
   <ion-item>
-    <ion-label>Gender</ion-label>
-    <ion-button id="gender-popover-button">Pick</ion-button>
-    <ion-popover trigger="gender-popover-button" [dismissOnSelect]="true">
-      <ng-template>
-        <ion-content>
-          <ion-list>
-            <ion-item [button]="true" [detail]="false">Male</ion-item>
-            <ion-item [button]="true" [detail]="false">Female </ion-item>
-            <ion-item [button]="true" id="nested-trigger"
-              >More options...</ion-item
-            >
-              <ng-template>
-                <ion-content>
-                  <ion-list>
-                    <ion-item [button]="true" [detail]="false">1..</ion-item>
-                    <ion-item [button]="true" [detail]="false">.2.</ion-item>
-                    <ion-item [button]="true" [detail]="false">..3</ion-item>
-                  </ion-list>
-                </ion-content>
-              </ng-template>
-          </ion-list>
-        </ion-content>
-      </ng-template>
-    </ion-popover>
+    <ion-select label="Sex" label-placement="floating">
+      <ion-select
+        [(ngModel)]="selectedGender"
+        (ngModelChange)="onGenderChange($event)"
+      >
+        <ion-select-option value="Male">Male</ion-select-option>
+        <ion-select-option value="Female">Female</ion-select-option>
+        <ion-select-option value="Male">Male</ion-select-option>
+        <ion-select-option value="Female">Female</ion-select-option>
+        <ion-select-option value="Male">Male</ion-select-option>
+        <ion-select-option value="Female">Female</ion-select-option>
+      </ion-select>
+    </ion-select>
   </ion-item>
 
   <ion-item>
-    <ion-label>Status</ion-label>
-    <ion-button id="status-popover-button">Pick</ion-button>
-    <ion-popover trigger="status-popover-button" [dismissOnSelect]="true">
-      <ng-template>
-        <ion-content>
-          <ion-list>
-            <ion-item [button]="true" [detail]="false">Single</ion-item>
-            <ion-item [button]="true" [detail]="false">Married </ion-item>
-            <ion-item [button]="true" [detail]="false">Widowed </ion-item>
-            <ion-item [button]="true" [detail]="false">Separated </ion-item>
-          </ion-list>
-        </ion-content>
-      </ng-template>
-    </ion-popover>
+    <ion-select label="Status" label-placement="floating">
+      <ion-select
+        [(ngModel)]="selectedStatus"
+        (ngModelChange)="onStatusChange($event)"
+      >
+        <ion-select-option value="Single">Single</ion-select-option>
+        <ion-select-option value="Married">Married</ion-select-option>
+        <ion-select-option value="Widowed">Widowed</ion-select-option>
+        <ion-select-option value="Separated">Separated</ion-select-option>
+      </ion-select>
+    </ion-select>
   </ion-item>
 
   <ion-item>
@@ -115,24 +106,23 @@
     <ion-input label="Occupation" type="text" placeholder=""></ion-input>
   </ion-item>
 
-
-    <ion-item>
-      <ion-label>Highest Education</ion-label>
-      <ion-button id="education-popover-button">Pick</ion-button>
-      <ion-popover trigger="education-popover-button" [dismissOnSelect]="true">
-      <ng-template>
-        <ion-content>
-          <ion-list>
-            <ion-item [button]="true" [detail]="false">None</ion-item>
-            <ion-item [button]="true" [detail]="false">Elementary </ion-item>
-            <ion-item [button]="true" [detail]="false">High School </ion-item>
-            <ion-item [button]="true" [detail]="false">Tertiary High School </ion-item>
-            <ion-item [button]="true" [detail]="false">College </ion-item>
-          </ion-list>
-          </ion-content>
-      </ng-template>
-    </ion-popover>
+  <ion-item>
+    <ion-select label="Highest Education" label-placement="floating">
+      <ion-select
+        [(ngModel)]="selectedSchool"
+        (ngModelChange)="onSchoolChange($event)"
+      >
+        <ion-select-option value="None">None</ion-select-option>
+        <ion-select-option value="Elementary">Elementary</ion-select-option>
+        <ion-select-option value="High School">High School</ion-select-option>
+        <ion-select-option value="Tertiary High School"
+          >Tertiary High</ion-select-option
+        >
+        <ion-select-option value="College">College</ion-select-option>
+      </ion-select>
+    </ion-select>
   </ion-item>
+  <ion-button (click)="generateExcelFile()">Download Excel File</ion-button>
 </ion-content>
 
 <ion-footer>
